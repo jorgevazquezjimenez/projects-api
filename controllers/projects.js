@@ -21,6 +21,13 @@ const projectsGet = async(req = request, res = response) => {
 
 }
 
+const projectsGetById = async(req = request, res = response) => {
+    const { id } = req.params
+
+    const project = await Project.findById( id )
+    res.json(project)
+}
+
 const projectsPost = async(req, res = response) => {
     const { name, description, status } = req.body;
     const project = new Project({
@@ -50,6 +57,7 @@ const projectsDelete = async(req = request, res = response) => {
 // Export the controller
 module.exports = {
     projectsGet,
+    projectsGetById,
     projectsPost,
     projectsPut,
     projectsDelete

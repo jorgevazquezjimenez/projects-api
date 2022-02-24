@@ -3,6 +3,7 @@ const { check } = require('express-validator')
 
 const {
     projectsGet,
+    projectsGetById,
     projectsPost,
     projectsPut,
     projectsDelete
@@ -12,6 +13,8 @@ const router = Router()
 
 // Endpoints
 router.get('/', projectsGet);
+
+router.get('/:id', projectsGetById);
 
 router.post('/', [
     check('name', 'El nombre es obligatorio').not().isEmpty(),
